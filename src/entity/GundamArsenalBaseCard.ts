@@ -1,4 +1,8 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm"
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable} from "typeorm"
+import { GundamArsenalBaseSet } from "./GundamArsenalBaseSet";
+import { GundamArsenalBaseLink } from "./GundamArsenalBaseLink";
+import { GundamArsenalBaseMS } from "./GundamArsenalBaseMS";
+import { GundamArsenalBaseSP } from "./GundamArsenalBaseSP";
 
 @Entity()
 export class GundamArsenalBaseCard{
@@ -140,88 +144,16 @@ export class GundamArsenalBaseCard{
     })
     subWeaponType: string;
 
-    @Column({
-        type:"varchar",
-        length: 255,
-        nullable: true
-    })
-    msAbility: string;
+    @ManyToMany(() => GundamArsenalBaseMS)
+    @JoinTable()
+    msAbility: GundamArsenalBaseMS[]
 
-    @Column({
-        type:"varchar",
-        length: 255,
-        nullable: true
-    })
-    msActiveCondition: string;
+    @ManyToMany(() => GundamArsenalBaseSP)
+    @JoinTable()
+    spAbility: GundamArsenalBaseSP[]
 
-    @Column({
-        type:"varchar",
-        length: 255,
-        nullable: true
-    })
-    msTargetType: string;
-
-    @Column({
-        type:"integer",
-        nullable: true
-    })
-    msAbilityRange: number;
-
-    @Column({
-        type:"integer",
-        nullable: true
-    })
-    msAbilityCost: number;
-
-    @Column({
-        type:"text",
-        nullable: true
-    })
-    msAbilityDesc: string;
-
-    @Column({
-        type:"varchar",
-        length: 255,
-        nullable: true
-    })
-    spAbilityName: string;
-
-    @Column({
-        type:"varchar",
-        length: 255,
-        nullable: true
-    })
-    spTargetType: string;
-
-    @Column({
-        type:"integer",
-        nullable: true
-    })
-    spAbilityRange: number;
-
-    @Column({
-        type:"integer",
-        nullable: true
-    })
-    spAbilityCost: number;
-
-    @Column({
-        type:"integer",
-        nullable: true
-    })
-    spAbilityDamage: number;
-
-    @Column({
-        type: "text",
-        nullable: true
-    })
-    spAbilityDesc: string;
-
-    @Column({
-        type: "varchar",
-        length: 255
-    })
-    setNum: string;
+    @ManyToOne(()=>GundamArsenalBaseSet, (set) => set.cards)
+    set: GundamArsenalBaseSet;
 
     @Column({
         type:"varchar",
@@ -262,5 +194,7 @@ export class GundamArsenalBaseCard{
     })
     plAbilityDesc: string;
 
-    
+    @ManyToMany(()=>GundamArsenalBaseLink)
+    @JoinTable()
+    links: GundamArsenalBaseLink[];
 }

@@ -8,7 +8,8 @@ export class GundamArsenalBaseLink{
     @Column({
         type:"varchar",
         length: 255,
-        nullable: false
+        nullable: false,
+        unique: true
     })
     linkAbility: string;
 

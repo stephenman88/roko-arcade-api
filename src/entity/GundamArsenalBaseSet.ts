@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm"
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm"
+import { GundamArsenalBaseCard } from "./GundamArsenalBaseCard";
 
 @Entity()
 export class GundamArsenalBaseSet{
@@ -8,14 +9,19 @@ export class GundamArsenalBaseSet{
     @Column({
         type:"varchar",
         length: 255,
-        nullable: false
+        nullable: false,
+        unique: true
     })
     name: string;
 
     @Column({
         type:"varchar",
         length: 255,
-        nullable: false
+        nullable: false,
+        unique: true
     })
     shortName: string;
+
+    @OneToMany(()=> GundamArsenalBaseCard, (card) => card.set)
+    cards: GundamArsenalBaseCard[];
 }
