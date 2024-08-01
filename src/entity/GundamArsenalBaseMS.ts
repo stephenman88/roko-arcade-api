@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm"
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm"
+import { GundamArsenalBaseCard } from "./GundamArsenalBaseCard";
 
 @Entity()
 export class GundamArsenalBaseMS{
@@ -43,4 +44,7 @@ export class GundamArsenalBaseMS{
         nullable: true
     })
     msAbilityDesc: string;
+
+    @ManyToOne(()=> GundamArsenalBaseCard, (card)=> card.msAbility)
+    cards: GundamArsenalBaseCard[];
 }

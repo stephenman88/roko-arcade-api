@@ -1,8 +1,9 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable} from "typeorm"
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable, OneToMany} from "typeorm"
 import { GundamArsenalBaseSet } from "./GundamArsenalBaseSet";
 import { GundamArsenalBaseLink } from "./GundamArsenalBaseLink";
 import { GundamArsenalBaseMS } from "./GundamArsenalBaseMS";
 import { GundamArsenalBaseSP } from "./GundamArsenalBaseSP";
+import { GundamArsenalBasePL } from "./GundamArsenalBasePL";
 
 @Entity()
 export class GundamArsenalBaseCard{
@@ -144,13 +145,11 @@ export class GundamArsenalBaseCard{
     })
     subWeaponType: string;
 
-    @ManyToMany(() => GundamArsenalBaseMS)
-    @JoinTable()
-    msAbility: GundamArsenalBaseMS[]
+    @OneToMany(() => GundamArsenalBaseMS, (ms) => ms.cards)
+    msAbility: GundamArsenalBaseMS
 
-    @ManyToMany(() => GundamArsenalBaseSP)
-    @JoinTable()
-    spAbility: GundamArsenalBaseSP[]
+    @OneToMany(() => GundamArsenalBaseSP, (sp) => sp.cards)
+    spAbility: GundamArsenalBaseSP
 
     @ManyToOne(()=>GundamArsenalBaseSet, (set) => set.cards)
     set: GundamArsenalBaseSet;
@@ -174,25 +173,8 @@ export class GundamArsenalBaseCard{
     })
     imageUrlBack: string;
 
-    @Column({
-        type:"varchar",
-        length: 255,
-        nullable: true
-    })
-    plAbilityName: string;
-
-    @Column({
-        type:"varchar",
-        length: 255,
-        nullable: true
-    })
-    plAbilityActiveCondition: string;
-
-    @Column({
-        type:"text",
-        nullable: true
-    })
-    plAbilityDesc: string;
+    @OneToMany(()=>GundamArsenalBasePL, (pl) => pl.cards)
+    plAbility: GundamArsenalBasePL;
 
     @ManyToMany(()=>GundamArsenalBaseLink)
     @JoinTable()
