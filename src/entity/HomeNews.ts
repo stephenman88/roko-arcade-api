@@ -5,9 +5,9 @@ export class HomeNews{
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column("text")
     title: string;
 
-    @Column()
+    @Column("text")
     description: string;
 }

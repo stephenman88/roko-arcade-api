@@ -1,6 +1,6 @@
 
 
-class set{
+class Set{
     constructor(
         name:String,
         shortName:String
@@ -11,4 +11,4 @@ class set{
     }
 }
 
-export default set;
+export default Set;

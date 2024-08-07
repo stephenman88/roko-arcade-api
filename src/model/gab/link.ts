@@ -1,6 +1,6 @@
 
 
-class link{
+class Link{
     constructor(
         linkAbility: String,
         linkEffect: String
@@ -11,4 +11,4 @@ class link{
     }
 }
 
-export default link;
+export default Link;

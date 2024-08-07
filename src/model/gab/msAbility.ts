@@ -1,6 +1,6 @@
 
 
-class msAbility{
+class MSAbility{
     constructor(
         msAbility:string,
         msActiveCondition: string,
@@ -19,4 +19,4 @@ class msAbility{
     }
 }
 
-export default msAbility;
+export default MSAbility;

@@ -5,9 +5,9 @@ export class HomeArticle{
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column("text")
     title: string;
 
-    @Column()
+    @Column("text")
     article: string;
 }

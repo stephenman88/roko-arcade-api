@@ -1,6 +1,6 @@
 
 
-class plAbility{
+class PLAbility{
     constructor(
         plAbilityName: string,
         plAbilityActiveCondition: string,
@@ -12,4 +12,4 @@ class plAbility{
     }
 }
 
-export default plAbility;
+export default PLAbility;

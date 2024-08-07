@@ -1,10 +1,10 @@
-import link from "./link";
-import msAbility from "./msAbility";
-import spAbility from "./spAbility";
-import set from "./set";
-import plAbility from "./plAbility";
+import Link from "./Link";
+import MSAbility from "./MSAbility";
+import SPAbility from "./SPAbility";
+import Set from "./Set";
+import PLAbility from "./PLAbility";
 
-class card{
+class Card{
     constructor(name:string,
     cardType:string,
     msType:string,
@@ -27,14 +27,14 @@ class card{
     subWeapon:string,
     subWeaponRange:number,
     subWeaponType:string,
-    msAbility: msAbility,
-    spAbility: spAbility,
-    set: set,
+    msAbility: MSAbility,
+    spAbility: SPAbility,
+    set: Set,
     suitCode: string,
     imageUrlFront: string,
     imageUrlBack: string,
-    plAbility: plAbility,
-    links: link[]) {
+    plAbility: PLAbility,
+    links: Link[]) {
         if(name||cardType||parallel||cost||rarity||mobility||longRange||shortRange||
             hp||series||set||imageUrlBack||imageUrlFront||links||msAbility||spAbility
         ){
@@ -49,4 +49,4 @@ class card{
     }
 }
 
-export default card;
+export default Card;

@@ -1,6 +1,6 @@
 
 
-class spAbility{
+class SPAbility{
     constructor(
         spAbilityName: string,
         spTargetType: string,
@@ -22,4 +22,4 @@ class spAbility{
     }
 }
 
-export default spAbility;
+export default SPAbility;
